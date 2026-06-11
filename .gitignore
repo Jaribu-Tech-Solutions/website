@@ -1,0 +1,18 @@
+# Python / Flask
+server/__pycache__/
+server/*.pyc
+server/.env
+server/instance/
+server/migrations/
+
+# Pipenv
+server/.venv/
+
+# Node / Vite
+client/node_modules/
+client/dist/
+client/.env
+
+# General
+.DS_Store
+*.log
