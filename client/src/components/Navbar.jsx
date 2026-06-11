@@ -1,15 +1,28 @@
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-20 border-b border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <div className="text-lg font-semibold">JaribuTech</div>
-        <nav className="hidden gap-6 md:flex text-sm text-slate-200/90">
-          <a href="#hero" className="hover:text-white">Home</a>
-          <a href="#services" className="hover:text-white">Services</a>
-          <a href="#portfolio" className="hover:text-white">Portfolio</a>
-          <a href="#contact" className="hover:text-white">Contact</a>
-        </nav>
+    <nav className="nav">
+      <a href="#" className="nav-logo">
+        Jaribu Tech <span>Solutions</span>
+      </a>
+
+      <ul className="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Work</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact" className="nav-cta">Talk to us →</a></li>
+      </ul>
+
+      <div className="nav-mobile-cta">
+        <a href="#contact">Talk to us →</a>
+        <button className="hamburger" aria-label="Menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
       </div>
-    </header>
+    </nav>
   );
 }
