@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Portfolio from "./components/Portfolio";
 import Pricing from "./components/Pricing";
 import Product from "./components/Product";
-import SamplePage from "./components/SamplePage";
 import Services from "./components/Services";
 import Team from "./components/Team";
 import TechStack from "./components/TechStack";
@@ -21,7 +20,6 @@ function App() {
       <HowWeWork />
       <Portfolio />
       <Product />
-      <SamplePage />
       <Pricing />
       <Team />
       <Contact />
