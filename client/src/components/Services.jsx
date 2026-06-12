@@ -26,6 +26,7 @@ const icons = {
   clock:     <svg {...ICON_ATTRS} width="16" height="16"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
   db:        <svg {...ICON_ATTRS} width="16" height="16"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>,
   bolt:      <svg {...ICON_ATTRS} width="16" height="16"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg>,
+  rocket:    <svg {...ICON_ATTRS} width="16" height="16"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>,
 }
 
 function SvcCard({ icon, title, desc, items, time }) {
@@ -70,15 +71,16 @@ const INDUSTRY_SERVICES = [
 ]
 
 const AUTO_SERVICES = [
-  { icon: icons.clock, title: 'Workflow Automation',    desc: 'Automated invoicing, payment reminders, report generation, and notifications. Stop doing manually what a system can handle.', items: ['Automated M-Pesa invoicing', 'SMS + email notifications', 'Scheduled reports'],         time: '1–2 weeks' },
-  { icon: icons.db,    title: 'Custom Admin Systems',   desc: 'Internal dashboards, inventory management, CRM, and data pipelines built exactly for how your team operates.',               items: ['Role-based access control', 'Inventory + stock tracking', 'Analytics + reporting'],     time: '2–4 weeks' },
-  { icon: icons.bolt,  title: 'MVPs in 2 Weeks',        desc: "You have an idea and need something real fast. We scope tight and ship a working product in two weeks - not a prototype that needs months more work.", items: ['Scoped discovery call', 'Core feature build only', 'Deployed and usable'], time: '2 weeks' },
+  { icon: icons.rocket, title: 'Startup — Idea to Launch', desc: 'You have an idea. We take it from concept to a live, revenue-ready product — strategy, design, build, and launch handled end to end.', items: ['Product discovery + scoping', 'Full-stack design and build', 'Payments, integrations, admin', 'Launch + post-launch support'], time: '4–10 weeks' },
+  { icon: icons.clock,  title: 'Workflow Automation',      desc: 'Automated invoicing, payment reminders, report generation, and notifications. Stop doing manually what a system can handle.',                  items: ['Automated M-Pesa invoicing', 'SMS + email notifications', 'Scheduled reports'],                                         time: '1–2 weeks' },
+  { icon: icons.db,     title: 'Custom Admin Systems',     desc: 'Internal dashboards, inventory management, CRM, and data pipelines built exactly for how your team operates.',                                  items: ['Role-based access control', 'Inventory + stock tracking', 'Analytics + reporting'],                                       time: '2–4 weeks' },
+  { icon: icons.bolt,   title: 'MVPs in 2 Weeks',          desc: "You have an idea and need something real fast. We scope tight and ship a working product in two weeks - not a prototype that needs months more work.", items: ['Scoped discovery call', 'Core feature build only', 'Deployed and usable'],                                     time: '2 weeks' },
 ]
 
 const TABS = [
   { key: 'web',        label: 'Web & App',  services: WEB_SERVICES,      cols: 4 },
   { key: 'industry',   label: 'Industry',   services: INDUSTRY_SERVICES,  cols: 4 },
-  { key: 'automation', label: 'Automation', services: AUTO_SERVICES,      cols: 3 },
+  { key: 'automation', label: 'Automation', services: AUTO_SERVICES,      cols: 4 },
 ]
 
 export default function Services() {

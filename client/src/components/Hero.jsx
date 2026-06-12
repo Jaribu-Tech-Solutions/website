@@ -78,8 +78,8 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex items-center overflow-hidden"
-      style={{ minHeight: '100vh', paddingTop: '96px', paddingBottom: '80px' }}
+      className="relative flex items-start overflow-hidden"
+      style={{ minHeight: 'min(100vh, 780px)', paddingTop: 'clamp(110px, 14vh, 180px)', paddingBottom: '100px' }}
     >
       <div className="hero-grid-bg" />
       <div
@@ -154,6 +154,20 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <a
+        href="#services"
+        className="absolute z-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 no-underline animate-bounce anim-fade-up anim-delay-5"
+        style={{ bottom: '36px' }}
+        aria-label="Scroll to services"
+      >
+        <span className="text-[10px] tracking-[0.12em] uppercase" style={{ color: 'var(--text-dim)' }}>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <polyline points="19 12 12 19 5 12" />
+        </svg>
+      </a>
 
       {/* Stats */}
       <div
