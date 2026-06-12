@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 function Section({ title, children }) {
   return (
     <div className="mb-10">
@@ -21,6 +23,13 @@ function Sub({ title, children }) {
 const EFFECTIVE = 'June 2026'
 
 export default function Legal() {
+  useEffect(() => {
+    const canonical = document.querySelector('link[rel="canonical"]')
+    const prev = canonical?.getAttribute('href')
+    canonical?.setAttribute('href', 'https://jaributechsolutions.co.ke/legal')
+    return () => { if (prev) canonical?.setAttribute('href', prev) }
+  }, [])
+
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
       {/* Nav bar — minimal */}
