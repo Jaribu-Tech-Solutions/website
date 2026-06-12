@@ -85,12 +85,12 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-16 md:py-28">
       <div className="max-w-[1160px] mx-auto px-5 md:px-14">
-        <div className="mb-14">
+        <div className="mb-14" data-reveal>
           <div className="flex items-center gap-2.5 mb-3.5">
-            <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
-            <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>05 · Pricing</span>
+            <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
+            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>05 · Pricing</span>
           </div>
-          <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+          <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
             Transparent pricing.<br />No surprises.
           </h2>
           <p className="text-[15px] max-w-[480px] leading-[1.7] font-light" style={{ color: 'var(--text-muted)' }}>
@@ -99,6 +99,7 @@ export default function Pricing() {
         </div>
 
         <div
+          data-reveal data-delay="1"
           className="grid grid-cols-1 md:grid-cols-3 rounded-2xl overflow-hidden"
           style={{ border: '1px solid var(--border)', background: 'var(--border)', gap: '1px' }}
         >

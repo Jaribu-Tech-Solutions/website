@@ -17,10 +17,10 @@ export default function Product() {
       <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[72px] items-center">
           {/* Left */}
-          <div>
+          <div data-reveal>
             <div className="flex items-center gap-2.5 mb-3.5">
-              <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
-              <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>04 · What we're building</span>
+              <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
+              <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>04 · What we're building</span>
             </div>
             <div
               className="inline-flex items-center gap-1.5 text-[11px] tracking-[0.08em] uppercase px-3 py-1.5 rounded-full mb-6"
@@ -29,7 +29,7 @@ export default function Product() {
               <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: 'var(--orange)' }} />
               Coming soon
             </div>
-            <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
+            <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>
               Replai - AI commerce agent for WhatsApp
             </h2>
             <p className="text-[14px] leading-[1.8] mb-6 font-light" style={{ color: 'var(--text-muted)' }}>
@@ -57,7 +57,7 @@ export default function Product() {
           </div>
 
           {/* Mockup */}
-          <div className="rounded-2xl overflow-hidden" style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}>
+          <div data-reveal data-delay="2" className="rounded-2xl overflow-hidden" style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}>
             <div className="flex items-center gap-2 p-3 px-4" style={{ background: 'var(--bg4)', borderBottom: '1px solid var(--border)' }}>
               <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
               <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />

@@ -115,24 +115,26 @@ export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-28">
       <div className="max-w-[1160px] mx-auto px-5 md:px-14">
-        <div className="flex items-center gap-2.5 mb-3.5">
-          <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
-          <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>07 · Get in touch</span>
+        <div data-reveal>
+          <div className="flex items-center gap-2.5 mb-3.5">
+            <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
+            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>07 · Get in touch</span>
+          </div>
+          <h2 className="font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+            Have something<br className="hidden sm:block" /> to build?
+          </h2>
+          <p className="text-[15px] max-w-[480px] leading-[1.7] font-light mb-12" style={{ color: 'var(--text-muted)' }}>
+            Tell us what you need. We'll give you a straight answer on scope, cost, and timeline. No sales call required.
+          </p>
         </div>
-        <h2 className="font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
-          Have something<br className="hidden sm:block" /> to build?
-        </h2>
-        <p className="text-[15px] max-w-[480px] leading-[1.7] font-light mb-12" style={{ color: 'var(--text-muted)' }}>
-          Tell us what you need. We'll give you a straight answer on scope, cost, and timeline — no sales call required.
-        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+        <div data-reveal data-delay="1" className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
           <ContactCard
             icon={phoneIcon}
             type="Direct line"
             title="Call or WhatsApp"
             value="+254 705 493 891"
-            sub="Call or drop a WhatsApp — we pick up."
+            sub="Call or drop a WhatsApp, we pick up."
             cta={{ href: 'https://wa.me/254705493891', label: 'Chat on WhatsApp →' }}
             ctaPrimary
           />
@@ -154,11 +156,11 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <div className="rounded-2xl p-6 md:p-10" style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}>
+        <div data-reveal data-delay="2" className="rounded-2xl p-6 md:p-10" style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}>
           <div className="mb-7">
             <h3 className="font-semibold text-[22px] tracking-tight mb-1.5">Send us a brief</h3>
             <p className="text-[13px] font-light" style={{ color: 'var(--text-muted)' }}>
-              Fill in what you're building and we'll come back with an honest answer — scope, cost, and timeline.
+              Fill in what you're building and we'll come back with an honest answer on scope, cost, and timeline.
             </p>
           </div>
 
@@ -174,7 +176,7 @@ export default function Contact() {
               </div>
               <div className="font-semibold text-[20px] mb-2">Brief received!</div>
               <p className="text-[14px] font-light mb-5" style={{ color: 'var(--text-muted)' }}>
-                We'll review it and reply within a few hours. Check your inbox — and WhatsApp if you left your number.
+                We'll review it and reply within a few hours. Check your inbox, and WhatsApp if you left your number.
               </p>
               <button
                 onClick={() => setStatus('idle')}
@@ -237,10 +239,10 @@ export default function Contact() {
                     className={inputClass}
                     style={{ ...inputStyle, color: form.package ? 'var(--text)' : 'var(--text-muted)' }}
                   >
-                    <option value="">Not sure yet — help me decide</option>
-                    <option value="Starter — KES 15,000">Starter — KES 15,000</option>
-                    <option value="Full Suite — KES 35,000">Full Suite — KES 35,000</option>
-                    <option value="Custom — From KES 60,000">Custom — From KES 60,000</option>
+                    <option value="">Not sure yet, help me decide</option>
+                    <option value="Starter - KES 15,000">Starter - KES 15,000</option>
+                    <option value="Full Suite - KES 35,000">Full Suite - KES 35,000</option>
+                    <option value="Custom - From KES 60,000">Custom - From KES 60,000</option>
                   </select>
                 </div>
               </div>
@@ -248,7 +250,7 @@ export default function Contact() {
               <div className="flex flex-col gap-[7px]">
                 <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>What are you building? *</label>
                 <textarea
-                  placeholder="Describe what you need — rough is fine. What does your business do, what problem does this solve, and any deadlines we should know about?"
+                  placeholder="Describe what you need, rough is fine. What does your business do, what problem does this solve, and any deadlines we should know about?"
                   value={form.message}
                   onChange={set('message')}
                   required
@@ -274,7 +276,7 @@ export default function Contact() {
 
               <div className="flex items-center justify-between pt-1 flex-wrap gap-4">
                 <span className="text-[11px]" style={{ color: 'var(--text-dim)' }}>
-                  We reply fast — usually within a few hours. No spam, ever.
+                  We reply fast, usually within a few hours. No spam, ever.
                 </span>
                 <button
                   type="submit"

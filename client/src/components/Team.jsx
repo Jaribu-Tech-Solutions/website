@@ -29,21 +29,24 @@ export default function Team() {
       style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
     >
       <div className="max-w-[1160px] mx-auto px-5 md:px-14">
-        <div className="flex items-center gap-2.5 mb-3.5">
-          <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
-          <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>06 · Who we are</span>
+        <div data-reveal>
+          <div className="flex items-center gap-2.5 mb-3.5">
+            <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
+            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>06 · Who we are</span>
+          </div>
+          <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+            Small team.<br />Serious output.
+          </h2>
+          <p className="text-[15px] max-w-[480px] leading-[1.7] font-light" style={{ color: 'var(--text-muted)' }}>
+            When you reach out, one of us picks up. You talk directly to the people building your product, start to finish.
+          </p>
         </div>
-        <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
-          Small team.<br />Serious output.
-        </h2>
-        <p className="text-[15px] max-w-[480px] leading-[1.7] font-light" style={{ color: 'var(--text-muted)' }}>
-          When you reach out, one of us picks up. You talk directly to the people building your product, start to finish.
-        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-14">
-          {MEMBERS.map(m => (
+          {MEMBERS.map((m, i) => (
             <div
               key={m.name}
+              data-reveal data-delay={String(i + 1)}
               className="relative rounded-[14px] p-8 overflow-hidden transition-all duration-300"
               style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
               onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-warm)'}

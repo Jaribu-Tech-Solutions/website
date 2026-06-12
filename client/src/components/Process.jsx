@@ -27,20 +27,22 @@ export default function Process() {
       style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
     >
       <div className="max-w-[1160px] mx-auto px-5 md:px-14">
-        <div className="flex items-center gap-2.5 mb-3.5">
-          <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
-          <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>02 · How we work</span>
+        <div data-reveal>
+          <div className="flex items-center gap-2.5 mb-3.5">
+            <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
+            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>02 · How we work</span>
+          </div>
+          <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+            No theatrics.<br />Just how it goes.
+          </h2>
+          <p className="text-[15px] max-w-[480px] leading-[1.7] font-light" style={{ color: 'var(--text-muted)' }}>
+            Three steps. You know what's happening at every stage. No surprises, no disappearing acts.
+          </p>
         </div>
-        <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
-          No theatrics.<br />Just how it goes.
-        </h2>
-        <p className="text-[15px] max-w-[480px] leading-[1.7] font-light" style={{ color: 'var(--text-muted)' }}>
-          Three steps. You know what's happening at every stage. No surprises, no disappearing acts.
-        </p>
 
         <div className="process-steps grid grid-cols-1 md:grid-cols-3 gap-0 mt-16">
-          {STEPS.map(step => (
-            <div key={step.num} className="pr-8 relative z-10 mb-9 md:mb-0">
+          {STEPS.map((step, i) => (
+            <div key={step.num} className="pr-8 relative z-10 mb-9 md:mb-0" data-reveal data-delay={String(i + 1)}>
               <div className="flex items-center gap-3.5 mb-6">
                 <div
                   className="w-[46px] h-[46px] rounded-full flex items-center justify-center font-display font-semibold text-[12px] flex-shrink-0"
