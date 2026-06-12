@@ -3,6 +3,8 @@
 **Website:** [jaributechsolutions.co.ke](https://www.jaributechsolutions.co.ke)  
 **Contact:** hello@jaributechsolutions.co.ke
 
+![alt text](./client/public/website%20image.png)
+
 ---
 
 ## About
@@ -51,12 +53,6 @@ This repository contains the Jaribu Tech Solutions marketing website — a singl
 │   └── images/       # Brand assets
 └── README.md
 ```
-
----
-
-## Deployment
-
-The site is deployed via Cloudflare Pages. Pushing to `main` triggers an automatic deploy.
 
 ---
 
