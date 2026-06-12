@@ -192,3 +192,15 @@ body {
 
 /* Services tab content fade on switch */
 .tab-fade { animation: fadeUp 0.3s ease both; }
+
+/* Chat message pop-in */
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Typing indicator bounce */
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%           { transform: translateY(-4px); }
+}

@@ -1,3 +1,5 @@
+import { useState, useEffect, useRef } from 'react'
+
 const FEATURES = [
   'Every business gets their own trained AI agent - not a shared bot',
   'M-Pesa payment confirmation built in, no manual reconciliation',
@@ -6,6 +8,138 @@ const FEATURES = [
 ]
 
 const TAGS = ['React', 'Flask', 'PostgreSQL', 'WhatsApp API', 'M-Pesa Daraja', 'Drop Labs AI']
+
+const CHAT = [
+  { side: 'c',  content: "Hi! I'd like to order 2kg rice and 1L cooking oil." },
+  { side: 'ai', content: <>Got it!<br />• Rice 2kg - KES 180<br />• Cooking oil 1L - KES 210<br /><strong>Total: KES 390</strong><br /><br />Pay via M-Pesa to confirm.</> },
+  { side: 'c',  content: "Done, payment sent." },
+  { side: 'ai', content: "KES 390 confirmed. Order preparing - delivery in 2-3hrs." },
+]
+
+function TypingDots() {
+  return (
+    <div
+      className="flex gap-1 px-3 py-[10px] rounded-[10px_2px_10px_10px] items-center"
+      style={{ background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', animation: 'msgIn 0.2s ease both' }}
+    >
+      {[0, 1, 2].map(i => (
+        <span
+          key={i}
+          className="block w-[5px] h-[5px] rounded-full"
+          style={{ background: 'var(--orange)', animation: `typingBounce 1.1s ease ${i * 0.18}s infinite` }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function ChatDemo() {
+  const [step, setStep]     = useState(0)
+  const [typing, setTyping] = useState(false)
+  const ref      = useRef(null)
+  const timers   = useRef([])
+  const playRef  = useRef(null)
+
+  function clear() {
+    timers.current.forEach(clearTimeout)
+    timers.current = []
+  }
+
+  function after(ms, fn) {
+    timers.current.push(setTimeout(fn, ms))
+  }
+
+  function play() {
+    clear()
+    setStep(0)
+    setTyping(false)
+    after(600,  () => setStep(1))
+    after(1300, () => setTyping(true))
+    after(2600, () => { setTyping(false); setStep(2) })
+    after(3500, () => setStep(3))
+    after(4300, () => setTyping(true))
+    after(5700, () => { setTyping(false); setStep(4) })
+    after(9500, () => playRef.current?.())
+  }
+
+  playRef.current = play
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) playRef.current?.()
+        else { clear(); setStep(0); setTyping(false) }
+      },
+      { threshold: 0.35 }
+    )
+    io.observe(el)
+    return () => { io.disconnect(); clear() }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <div ref={ref} className="rounded-2xl overflow-hidden" style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}>
+      {/* Chrome bar */}
+      <div className="flex items-center gap-2 p-3 px-4" style={{ background: 'var(--bg4)', borderBottom: '1px solid var(--border)' }}>
+        <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
+        <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
+        <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
+        <div className="flex-1 h-1.5 rounded ml-2" style={{ background: 'var(--border)' }} />
+      </div>
+
+      {/* Messages */}
+      <div className="p-5 flex flex-col gap-2.5" style={{ minHeight: '228px' }}>
+        {CHAT.map((msg, i) =>
+          step > i ? (
+            <div
+              key={i}
+              className={`flex gap-2 items-start ${msg.side === 'ai' ? 'flex-row-reverse' : ''}`}
+              style={{ animation: 'msgIn 0.3s ease both' }}
+            >
+              <div
+                className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
+                style={msg.side === 'ai'
+                  ? { background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--text-muted)' }
+                  : { background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', color: 'var(--orange)' }
+                }
+              >
+                {msg.side === 'ai' ? 'AI' : 'C'}
+              </div>
+              <div
+                className={`text-[12px] px-3 py-2 max-w-[80%] font-light leading-[1.6] ${msg.side === 'ai' ? 'rounded-[10px_2px_10px_10px]' : 'rounded-[2px_10px_10px_10px]'}`}
+                style={msg.side === 'ai'
+                  ? { background: 'var(--orange-glow)', color: 'var(--text)', border: '1px solid var(--border-warm)' }
+                  : { background: 'var(--bg4)', color: 'var(--text-muted)', border: '1px solid var(--border)' }
+                }
+              >
+                {msg.content}
+              </div>
+            </div>
+          ) : null
+        )}
+
+        {typing && (
+          <div className="flex flex-row-reverse gap-2 items-start">
+            <div
+              className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
+              style={{ background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+            >
+              AI
+            </div>
+            <TypingDots />
+          </div>
+        )}
+      </div>
+
+      {/* Input bar */}
+      <div className="flex items-center gap-2 mx-5 mb-4 px-3.5 py-2.5 rounded-lg" style={{ background: 'var(--bg4)', border: '1px solid var(--border)' }}>
+        <span className="text-[11px] flex-1" style={{ color: 'var(--text-dim)' }}>Type a message...</span>
+        <button className="px-3 py-1 rounded text-[11px] text-white cursor-pointer font-body" style={{ background: 'var(--orange)', border: 'none' }}>Send</button>
+      </div>
+    </div>
+  )
+}
 
 export default function Product() {
   return (
@@ -56,60 +190,9 @@ export default function Product() {
             </div>
           </div>
 
-          {/* Mockup */}
-          <div data-reveal data-delay="2" className="rounded-2xl overflow-hidden" style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}>
-            <div className="flex items-center gap-2 p-3 px-4" style={{ background: 'var(--bg4)', borderBottom: '1px solid var(--border)' }}>
-              <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: 'var(--border)' }} />
-              <div className="flex-1 h-1.5 rounded ml-2" style={{ background: 'var(--border)' }} />
-            </div>
-            <div className="p-5 flex flex-col gap-2.5">
-              {/* Customer msg */}
-              <div className="flex gap-2 items-start">
-                <div
-                  className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
-                  style={{ background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', color: 'var(--orange)' }}
-                >C</div>
-                <div className="text-[12px] px-3 py-2 rounded-[2px_10px_10px_10px] max-w-[80%] font-light leading-[1.6]" style={{ background: 'var(--bg4)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>
-                  Hi! I'd like to order 2kg rice and 1L cooking oil.
-                </div>
-              </div>
-              {/* AI reply */}
-              <div className="flex flex-row-reverse gap-2 items-start">
-                <div
-                  className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
-                  style={{ background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
-                >AI</div>
-                <div className="text-[12px] px-3 py-2 rounded-[10px_2px_10px_10px] max-w-[80%] font-light leading-[1.6]" style={{ background: 'var(--orange-glow)', color: 'var(--text)', border: '1px solid var(--border-warm)' }}>
-                  Got it!<br />• Rice 2kg - KES 180<br />• Cooking oil 1L - KES 210<br /><strong>Total: KES 390</strong><br /><br />Pay via M-Pesa to confirm.
-                </div>
-              </div>
-              {/* Customer confirm */}
-              <div className="flex gap-2 items-start">
-                <div
-                  className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
-                  style={{ background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', color: 'var(--orange)' }}
-                >C</div>
-                <div className="text-[12px] px-3 py-2 rounded-[2px_10px_10px_10px] max-w-[80%] font-light leading-[1.6]" style={{ background: 'var(--bg4)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>
-                  Done, payment sent.
-                </div>
-              </div>
-              {/* AI confirmed */}
-              <div className="flex flex-row-reverse gap-2 items-start">
-                <div
-                  className="w-[26px] h-[26px] rounded-lg flex items-center justify-center text-[8px] font-display font-bold flex-shrink-0"
-                  style={{ background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
-                >AI</div>
-                <div className="text-[12px] px-3 py-2 rounded-[10px_2px_10px_10px] max-w-[80%] font-light leading-[1.6]" style={{ background: 'var(--orange-glow)', color: 'var(--text)', border: '1px solid var(--border-warm)' }}>
-                  KES 390 confirmed. Order preparing - delivery in 2-3hrs.
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mx-5 mb-4 px-3.5 py-2.5 rounded-lg" style={{ background: 'var(--bg4)', border: '1px solid var(--border)' }}>
-              <span className="text-[11px] flex-1" style={{ color: 'var(--text-dim)' }}>Type a message...</span>
-              <button className="px-3 py-1 rounded text-[11px] text-white cursor-pointer font-body" style={{ background: 'var(--orange)', border: 'none' }}>Send</button>
-            </div>
+          {/* Animated chat */}
+          <div data-reveal data-delay="2">
+            <ChatDemo />
           </div>
         </div>
       </div>
