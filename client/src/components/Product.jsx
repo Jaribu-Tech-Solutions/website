@@ -102,7 +102,7 @@ export default function Product() {
                   style={{ background: 'var(--bg4)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
                 >AI</div>
                 <div className="text-[12px] px-3 py-2 rounded-[10px_2px_10px_10px] max-w-[80%] font-light leading-[1.6]" style={{ background: 'var(--orange-glow)', color: 'var(--text)', border: '1px solid var(--border-warm)' }}>
-                  ✅ KES 390 confirmed. Order preparing - delivery in 2–3hrs.
+                  KES 390 confirmed. Order preparing - delivery in 2-3hrs.
                 </div>
               </div>
             </div>
