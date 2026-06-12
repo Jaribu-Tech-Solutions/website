@@ -20,10 +20,8 @@ const clockIcon = (
 function ContactCard({ icon, type, title, value, sub, cta, ctaPrimary }) {
   return (
     <div
-      className="rounded-[14px] p-7 transition-all duration-300"
-      style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
-      onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-warm)'}
-      onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+      className="card-hover rounded-[14px] p-7 transition-all duration-300"
+      style={{ background: 'var(--bg2)' }}
     >
       <div
         className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4"
@@ -40,19 +38,7 @@ function ContactCard({ icon, type, title, value, sub, cta, ctaPrimary }) {
           href={cta.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-[12px] no-underline transition-all duration-200"
-          style={ctaPrimary
-            ? { background: 'var(--orange)', border: '1px solid var(--orange)', color: '#fff' }
-            : { background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }
-          }
-          onMouseEnter={e => {
-            if (ctaPrimary) { e.currentTarget.style.background = 'var(--orange-dim)' }
-            else { e.currentTarget.style.borderColor = 'var(--border-warm)'; e.currentTarget.style.color = 'var(--orange)' }
-          }}
-          onMouseLeave={e => {
-            if (ctaPrimary) { e.currentTarget.style.background = 'var(--orange)' }
-            else { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' }
-          }}
+          className={`${ctaPrimary ? 'btn-primary' : 'btn-ghost'} inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-[12px] no-underline`}
         >
           {cta.label}
         </a>
@@ -120,7 +106,7 @@ export default function Contact() {
             <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
             <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>08 · Get in touch</span>
           </div>
-          <h2 className="font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+          <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
             Have something<br className="hidden sm:block" /> to build?
           </h2>
           <p className="text-[15px] max-w-[480px] leading-[1.7] font-light mb-12" style={{ color: 'var(--text-muted)' }}>
@@ -180,8 +166,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={() => setStatus('idle')}
-                className="text-[12px] no-underline px-4 py-2 rounded-md cursor-pointer"
-                style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+                className="btn-ghost-white text-[12px] no-underline px-4 py-2 rounded-md cursor-pointer"
               >
                 Send another brief
               </button>
@@ -190,8 +175,9 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Your name *</label>
+                  <label htmlFor="contact-name" className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Your name *</label>
                   <input
+                    id="contact-name"
                     type="text"
                     placeholder="Jane Wanjiku"
                     value={form.name}
@@ -203,8 +189,9 @@ export default function Contact() {
                   />
                 </div>
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Email *</label>
+                  <label htmlFor="contact-email" className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Email *</label>
                   <input
+                    id="contact-email"
                     type="email"
                     placeholder="jane@company.co.ke"
                     value={form.email}
@@ -219,8 +206,9 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Phone / WhatsApp</label>
+                  <label htmlFor="contact-phone" className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Phone / WhatsApp</label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     placeholder="+254 7xx xxx xxx"
                     value={form.phone}
@@ -231,8 +219,9 @@ export default function Contact() {
                   />
                 </div>
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Budget range</label>
+                  <label htmlFor="contact-package" className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Budget range</label>
                   <select
+                    id="contact-package"
                     value={form.package}
                     onChange={set('package')}
                     disabled={status === 'loading'}
@@ -248,8 +237,9 @@ export default function Contact() {
               </div>
 
               <div className="flex flex-col gap-[7px]">
-                <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>What are you building? *</label>
+                <label htmlFor="contact-message" className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>What are you building? *</label>
                 <textarea
+                  id="contact-message"
                   placeholder="Describe what you need, rough is fine. What does your business do, what problem does this solve, and any deadlines we should know about?"
                   value={form.message}
                   onChange={set('message')}
@@ -281,14 +271,8 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white cursor-pointer transition-all duration-200"
-                  style={{
-                    background: status === 'loading' ? 'var(--orange-dim)' : 'var(--orange)',
-                    border: 'none',
-                    opacity: status === 'loading' ? 0.75 : 1,
-                  }}
-                  onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.background = 'var(--orange-dim)' }}
-                  onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.background = 'var(--orange)' }}
+                  className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium cursor-pointer"
+                  style={{ opacity: status === 'loading' ? 0.75 : 1 }}
                 >
                   {status === 'loading' ? (
                     <>

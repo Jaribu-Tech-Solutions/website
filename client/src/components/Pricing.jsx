@@ -128,7 +128,7 @@ export default function Pricing() {
                 {plan.amount}{' '}
                 <span className="text-[13px] font-normal font-body" style={{ color: 'var(--text-muted)' }}>{plan.amountSuffix}</span>
               </div>
-              <div className="text-[12px] mb-6 font-light" style={{ color: 'var(--text-muted)' }}>
+              <div className="text-[13px] mb-6 font-light" style={{ color: 'var(--text-muted)' }}>
                 {plan.monthlyBold
                   ? <><strong style={{ color: 'var(--text)', fontWeight: 500 }}>{plan.monthly.split(' based')[0]}</strong>{' based' + plan.monthly.split(' based')[1]}</>
                   : plan.monthly
@@ -141,7 +141,7 @@ export default function Pricing() {
                 {plan.features.map(([on, label]) => (
                   <div key={label} className="flex items-start gap-2.5">
                     <CheckIcon on={on} />
-                    <span className="text-[12px] font-light leading-snug" style={{ color: on ? 'var(--text-muted)' : 'var(--text-dim)' }}>
+                    <span className="text-[13px] font-light leading-snug" style={{ color: on ? 'var(--text-muted)' : 'var(--text-dim)' }}>
                       {label}
                     </span>
                   </div>
@@ -150,19 +150,7 @@ export default function Pricing() {
 
               <a
                 href="#contact"
-                className="block w-full py-[11px] rounded-lg text-[13px] font-medium text-center no-underline transition-all duration-200"
-                style={plan.ctaStyle === 'primary'
-                  ? { background: 'var(--orange)', border: 'none', color: '#fff' }
-                  : { background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }
-                }
-                onMouseEnter={e => {
-                  if (plan.ctaStyle === 'primary') { e.currentTarget.style.background = 'var(--orange-dim)' }
-                  else { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'var(--text)' }
-                }}
-                onMouseLeave={e => {
-                  if (plan.ctaStyle === 'primary') { e.currentTarget.style.background = 'var(--orange)' }
-                  else { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' }
-                }}
+                className={`${plan.ctaStyle === 'primary' ? 'btn-primary' : 'btn-ghost-white'} block w-full py-[11px] rounded-lg text-[13px] font-medium text-center no-underline`}
               >
                 {plan.cta}
               </a>

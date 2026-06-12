@@ -30,12 +30,7 @@ const icons = {
 
 function SvcCard({ icon, title, desc, items, time }) {
   return (
-    <div
-      className="svc-card rounded-xl p-6"
-      style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
-      onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg3)'; e.currentTarget.style.borderColor = 'var(--border-warm)' }}
-      onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg2)'; e.currentTarget.style.borderColor = 'var(--border)' }}
-    >
+    <div className="svc-card rounded-xl p-6">
       <div
         className="w-9 h-9 rounded-lg flex items-center justify-center mb-4"
         style={{ background: 'var(--orange-glow)', border: '1px solid var(--border-warm)' }}
@@ -46,7 +41,7 @@ function SvcCard({ icon, title, desc, items, time }) {
       <p className="text-[12px] leading-[1.65] mb-4 font-light" style={{ color: 'var(--text-muted)' }}>{desc}</p>
       <ul className="flex flex-col gap-1.5 mb-4 list-none p-0">
         {items.map(item => (
-          <li key={item} className="flex items-start gap-1.5 text-[11px] leading-snug" style={{ color: 'var(--text-dim)' }}>
+          <li key={item} className="flex items-start gap-1.5 text-[13px] leading-snug" style={{ color: 'var(--text-dim)' }}>
             <span style={{ color: 'var(--orange)', flexShrink: 0, marginTop: '1px', fontSize: '10px' }}>✓</span>
             {item}
           </li>
@@ -81,9 +76,9 @@ const AUTO_SERVICES = [
 ]
 
 const TABS = [
-  { key: 'web',        label: 'Web & App',  services: WEB_SERVICES,     cols: 4 },
-  { key: 'industry',   label: 'Industry',   services: INDUSTRY_SERVICES, cols: 4 },
-  { key: 'automation', label: 'Automation', services: AUTO_SERVICES,     cols: 3 },
+  { key: 'web',        label: 'Web & App',  services: WEB_SERVICES,      cols: 4 },
+  { key: 'industry',   label: 'Industry',   services: INDUSTRY_SERVICES,  cols: 4 },
+  { key: 'automation', label: 'Automation', services: AUTO_SERVICES,      cols: 3 },
 ]
 
 export default function Services() {
@@ -109,13 +104,7 @@ export default function Services() {
             <button
               key={t.key}
               onClick={() => setActive(t.key)}
-              className="px-5 py-2 rounded-lg text-[13px] font-medium cursor-pointer transition-all duration-200"
-              style={active === t.key
-                ? { background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', color: 'var(--orange)' }
-                : { background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }
-              }
-              onMouseEnter={e => { if (active !== t.key) { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.color = 'var(--text)' } }}
-              onMouseLeave={e => { if (active !== t.key) { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' } }}
+              className={`tab-btn ${active === t.key ? 'tab-btn-active' : ''} px-5 py-2 rounded-lg text-[13px] font-medium cursor-pointer`}
             >
               {t.label}
             </button>

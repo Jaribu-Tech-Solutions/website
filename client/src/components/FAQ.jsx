@@ -93,10 +93,7 @@ export default function FAQ() {
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-medium no-underline transition-all duration-200"
-              style={{ background: 'var(--orange-glow)', border: '1px solid var(--border-warm)', color: 'var(--orange)' }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(232,93,26,0.15)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'var(--orange-glow)'}
+              className="btn-orange-ghost inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-[13px] font-medium no-underline"
             >
               Still have a question? Ask us →
             </a>

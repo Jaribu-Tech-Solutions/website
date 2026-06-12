@@ -64,6 +64,8 @@ body {
   position: relative;
   overflow: hidden;
   transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  background: var(--bg2);
+  border: 1px solid var(--border);
 }
 .svc-card::after {
   content: '';
@@ -75,9 +77,82 @@ body {
   transition: opacity 0.25s;
 }
 .svc-card:hover::after { opacity: 1; }
-.svc-card:hover { transform: translateY(-2px); }
+.svc-card:hover {
+  transform: translateY(-2px);
+  background: var(--bg3);
+  border-color: var(--border-warm);
+}
 .svc-start-gap { transition: gap 0.2s; }
 .svc-card:hover .svc-start-gap { gap: 8px; }
+
+/* === Hover utility classes (replaces inline onMouseEnter/Leave) === */
+
+/* Card border warm on hover */
+.card-hover {
+  border: 1px solid var(--border);
+  transition: border-color 0.25s;
+}
+.card-hover:hover { border-color: var(--border-warm); }
+
+/* Primary orange button */
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--orange-dim); }
+
+/* Ghost button — border warm + orange text on hover */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--border-warm); color: var(--orange); }
+
+/* Ghost button — white border + white text on hover */
+.btn-ghost-white {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+
+/* Orange tinted ghost button (FAQ CTA, etc.) */
+.btn-orange-ghost {
+  background: var(--orange-glow);
+  border: 1px solid var(--border-warm);
+  color: var(--orange);
+  transition: background 0.2s;
+}
+.btn-orange-ghost:hover { background: rgba(232,93,26,0.15); }
+
+/* Dim link button (team social links) */
+.btn-dim {
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-dim:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+/* Services tab buttons */
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.tab-btn:not(.tab-btn-active):hover {
+  border-color: rgba(255,255,255,0.15);
+  color: var(--text);
+}
+.tab-btn-active {
+  background: var(--orange-glow);
+  border-color: var(--border-warm);
+  color: var(--orange);
+}
 
 /* Process connector line */
 .process-steps {
@@ -192,6 +267,15 @@ body {
 
 /* Services tab content fade on switch */
 .tab-fade { animation: fadeUp 0.3s ease both; }
+
+/* Reduced motion — disable all animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* Chat message pop-in */
 @keyframes msgIn {

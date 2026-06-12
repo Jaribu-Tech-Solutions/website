@@ -14,10 +14,7 @@ const MEMBERS = [
     name: 'Mati Joseph',
     roles: ['Product', 'Frontend', 'Full-stack'],
     bio: "Drives product decisions and frontend execution. Thinks in user flows and database schemas at the same time. Strong opinion: most software fails because nobody stopped to ask why it needs to exist. Asks that question before writing a single line.",
-    links: [
-      { label: 'GitHub ↗', href: '#' },
-      { label: 'LinkedIn ↗', href: '#' },
-    ],
+    links: [],
   },
 ]
 
@@ -47,10 +44,8 @@ export default function Team() {
             <div
               key={m.name}
               data-reveal data-delay={String(i + 1)}
-              className="relative rounded-[14px] p-8 overflow-hidden transition-all duration-300"
-              style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-warm)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+              className="card-hover relative rounded-[14px] p-8 overflow-hidden transition-all duration-300"
+              style={{ background: 'var(--bg2)' }}
             >
               <div className="team-card-glow" />
               <div
@@ -72,20 +67,21 @@ export default function Team() {
                 ))}
               </div>
               <p className="text-[13px] leading-[1.75] mb-5 font-light" style={{ color: 'var(--text-muted)' }}>{m.bio}</p>
-              <div className="flex gap-2">
-                {m.links.map(l => (
-                  <a
-                    key={l.label}
-                    href={l.href}
-                    className="text-[11px] no-underline px-3 py-1.5 rounded transition-all duration-200"
-                    style={{ color: 'var(--text-dim)', border: '1px solid var(--border)' }}
-                    onMouseEnter={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}
-                    onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-dim)'; e.currentTarget.style.borderColor = 'var(--border)' }}
-                  >
-                    {l.label}
-                  </a>
-                ))}
-              </div>
+              {m.links.length > 0 && (
+                <div className="flex gap-2">
+                  {m.links.map(l => (
+                    <a
+                      key={l.label}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-dim text-[11px] no-underline px-3 py-1.5 rounded"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

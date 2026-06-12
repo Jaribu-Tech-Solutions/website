@@ -14,6 +14,21 @@ import Footer from './components/Footer'
 import Legal from './components/Legal'
 
 function WhatsAppFAB() {
+  const [hidden, setHidden] = useState(false)
+
+  useEffect(() => {
+    const contact = document.getElementById('contact')
+    if (!contact) return
+    const io = new IntersectionObserver(
+      ([entry]) => setHidden(entry.isIntersecting),
+      { threshold: 0.1 }
+    )
+    io.observe(contact)
+    return () => io.disconnect()
+  }, [])
+
+  if (hidden) return null
+
   return (
     <a
       href="https://wa.me/254705493891?text=Hi%2C%20I%20found%20your%20site%20and%20I%20want%20to%20discuss%20a%20project."

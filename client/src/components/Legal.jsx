@@ -33,10 +33,7 @@ export default function Legal() {
         </a>
         <a
           href="/"
-          className="text-[12px] no-underline px-4 py-2 rounded-lg transition-all duration-200"
-          style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.18)'; e.currentTarget.style.color = 'var(--text)' }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' }}
+          className="btn-ghost-white text-[12px] no-underline px-4 py-2 rounded-lg"
         >
           ← Back to site
         </a>

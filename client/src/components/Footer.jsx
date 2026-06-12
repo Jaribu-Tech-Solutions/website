@@ -28,7 +28,7 @@ export default function Footer() {
                 <ul className="list-none p-0 flex flex-col gap-2">
                   {['Web Dev','E-commerce','Payments','Automation','Custom'].map(item => (
                     <li key={item}>
-                      <a href="#services" className="text-[11px] md:text-[12px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{item}</a>
+                      <a href="#services" className="text-[13px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{item}</a>
                     </li>
                   ))}
                 </ul>
@@ -40,7 +40,7 @@ export default function Footer() {
                 <ul className="list-none p-0 flex flex-col gap-2">
                   {[['#team','About'],['#portfolio','Work'],['#pricing','Pricing'],['#contact','Contact'],['#product','Replai']].map(([href, label]) => (
                     <li key={label}>
-                      <a href={href} className="text-[11px] md:text-[12px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{label}</a>
+                      <a href={href} className="text-[13px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{label}</a>
                     </li>
                   ))}
                 </ul>
@@ -52,7 +52,7 @@ export default function Footer() {
                 <ul className="list-none p-0 flex flex-col gap-2">
                   {[['https://github.com/BakariJuma1','GitHub'],['https://linkedin.com/in/bakari-juma1','LinkedIn'],['https://wa.me/254705493891','WhatsApp']].map(([href, label]) => (
                     <li key={label}>
-                      <a href={href} className="text-[11px] md:text-[12px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{label}</a>
+                      <a href={href} className="text-[13px] no-underline font-light transition-colors footer-link-hover" style={{ color: 'var(--text-muted)' }}>{label}</a>
                     </li>
                   ))}
                 </ul>

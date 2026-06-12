@@ -68,10 +68,8 @@ export default function Portfolio() {
             <div
               key={p.name}
               data-reveal data-delay={String(i + 1)}
-              className="rounded-[14px] overflow-hidden transition-all duration-300"
-              style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}
-              onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-warm)'}
-              onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+              className="card-hover rounded-[14px] overflow-hidden transition-all duration-300"
+              style={{ background: 'var(--bg2)' }}
             >
               <div
                 className="h-[200px] flex items-center justify-center p-5 overflow-hidden"
@@ -98,24 +96,6 @@ export default function Portfolio() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-4" data-reveal>
-          <div
-            className="rounded-[14px] p-6 flex items-center gap-4"
-            style={{ background: 'var(--bg2)', border: '1px dashed var(--border)' }}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-dim)', flexShrink: 0 }}>
-              <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="16" /><line x1="8" y1="12" x2="16" y2="12" />
-            </svg>
-            <div>
-              <span className="text-[14px] font-medium block mb-1" style={{ color: 'var(--text-muted)' }}>More projects shipping soon</span>
-              <p className="text-[12px] font-light" style={{ color: 'var(--text-dim)' }}>
-                We're adding work to this section as we go.{' '}
-                <a href="#contact" className="no-underline" style={{ color: 'var(--orange)' }}>Reach out to see more.</a>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </section>

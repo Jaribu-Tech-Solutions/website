@@ -127,22 +127,30 @@ export default function Hero() {
           <div className="flex items-center gap-4 flex-wrap anim-fade-up anim-delay-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium no-underline text-white transition-all duration-200 hover:-translate-y-px"
-              style={{ background: 'var(--orange)' }}
-              onMouseEnter={e => e.currentTarget.style.background = 'var(--orange-dim)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'var(--orange)'}
+              className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium no-underline hover:-translate-y-px transition-transform duration-200"
             >
-              Get a quote <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              Get a quote →
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-normal no-underline transition-all duration-200"
-              style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = 'var(--text)' }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-muted)' }}
+              className="btn-ghost-white inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-normal no-underline"
             >
               See our work
             </a>
+          </div>
+
+          {/* Stats — visible on mobile below CTAs */}
+          <div className="flex gap-8 mt-9 md:hidden anim-fade-up anim-delay-5">
+            {[
+              { num: '2', lbl: 'Developers' },
+              { num: '<4h', lbl: 'Reply time' },
+              { num: '2w', lbl: 'MVP delivery' },
+            ].map(s => (
+              <div key={s.lbl}>
+                <div className="font-display font-bold text-[22px] tracking-tight" style={{ color: 'var(--text)' }}>{s.num}</div>
+                <div className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>{s.lbl}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
