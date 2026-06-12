@@ -34,7 +34,7 @@ export default function Hero() {
         y:       Math.random() * canvas.height,
         vx:      (Math.random() - 0.5) * 0.18,
         vy:      Math.random() * 0.22 + 0.06,
-        alpha:   Math.random() * 0.28 + 0.04,
+        alpha:   Math.random() * 0.4 + 0.12,
         fade:    Math.random() < 0.5 ? 1 : -1,
         size:    Math.floor(Math.random() * 4) + 9,
         isOrange,
@@ -52,9 +52,9 @@ export default function Hero() {
       for (const p of particles) {
         p.x += p.vx
         p.y += p.vy
-        p.alpha += p.fade * 0.0008
-        if (p.alpha > 0.32) p.fade = -1
-        if (p.alpha < 0.03) p.fade = 1
+        p.alpha += p.fade * 0.0012
+        if (p.alpha > 0.55) p.fade = -1
+        if (p.alpha < 0.08) p.fade = 1
         if (p.y > canvas.height + 20) { p.y = -20; p.x = Math.random() * canvas.width }
         if (p.x < -60) p.x = canvas.width + 10
         if (p.x > canvas.width + 60) p.x = -10
@@ -78,8 +78,8 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex items-start overflow-hidden"
-      style={{ minHeight: 'min(100vh, 780px)', paddingTop: 'clamp(110px, 14vh, 180px)', paddingBottom: '100px' }}
+      className="hero-section relative flex items-start overflow-hidden"
+      style={{ paddingTop: 'clamp(110px, 14vh, 180px)', paddingBottom: '100px' }}
     >
       <div className="hero-grid-bg" />
       <div
@@ -93,7 +93,7 @@ export default function Hero() {
       <canvas
         ref={canvasRef}
         className="absolute inset-0 z-10 pointer-events-none"
-        style={{ opacity: 0.55, width: '100%', height: '100%' }}
+        style={{ opacity: 0.85, width: '100%', height: '100%' }}
       />
 
       <div className="relative z-20 max-w-[1160px] mx-auto px-5 md:px-14 w-full">
@@ -105,7 +105,7 @@ export default function Hero() {
           <div className="flex items-center gap-2.5 mb-5 md:mb-8 anim-fade-up anim-delay-1">
             <div className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--orange)' }} />
             <span className="text-[11px] tracking-[0.13em] uppercase" style={{ color: 'var(--text-muted)' }}>
-              Nairobi, Kenya · Est. 2024
+              Nairobi, Kenya · Est. 2026
             </span>
           </div>
 

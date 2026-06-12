@@ -172,6 +172,16 @@ body {
   .process-steps::before { display: block; }
 }
 
+/* Hero section height — full screen on mobile, capped on large screens */
+.hero-section {
+  min-height: 100vh;
+}
+@media (min-width: 1024px) {
+  .hero-section {
+    min-height: min(100vh, 780px);
+  }
+}
+
 /* Hero grid + glow */
 .hero-grid-bg {
   position: absolute;

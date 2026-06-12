@@ -31,7 +31,7 @@ export default function Nav() {
           <button
             onClick={() => setMobileOpen(o => !o)}
             className="flex items-center justify-center w-9 h-9 rounded-md cursor-pointer"
-            style={{ background: 'none', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+            style={{ background: 'none', border: '1px solid rgba(255,255,255,0.2)', color: '#fff' }}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           >
             {mobileOpen ? (
