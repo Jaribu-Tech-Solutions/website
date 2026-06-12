@@ -61,11 +61,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center justify-between pt-6 flex-wrap gap-3" style={{ borderTop: '1px solid var(--border)' }}>
-            <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>© 2024 Jaribu Tech Solutions</div>
-            <div className="flex gap-5">
-              <a href="#" className="text-[12px] no-underline transition-colors hover:text-white" style={{ color: 'var(--text-dim)' }}>Privacy Policy</a>
-              <a href="#" className="text-[12px] no-underline transition-colors hover:text-white" style={{ color: 'var(--text-dim)' }}>Terms of Service</a>
-            </div>
+            <div className="text-[12px]" style={{ color: 'var(--text-dim)' }}>© 2026 Jaribu Tech Solutions · Nairobi, Kenya</div>
+            <a href="/legal" className="text-[12px] no-underline transition-colors footer-link-hover" style={{ color: 'var(--text-dim)' }}>
+              Privacy &amp; Terms
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Ticker from './components/Ticker'
@@ -10,6 +10,7 @@ import Pricing from './components/Pricing'
 import Team from './components/Team'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import Legal from './components/Legal'
 
 function WhatsAppFAB() {
   return (
@@ -35,7 +36,7 @@ function WhatsAppFAB() {
   )
 }
 
-export default function App() {
+function HomePage() {
   useEffect(() => {
     const els = document.querySelectorAll('[data-reveal]')
     const io = new IntersectionObserver(
@@ -66,4 +67,17 @@ export default function App() {
       <WhatsAppFAB />
     </>
   )
+}
+
+export default function App() {
+  const [path, setPath] = useState(window.location.pathname)
+
+  useEffect(() => {
+    const handler = () => setPath(window.location.pathname)
+    window.addEventListener('popstate', handler)
+    return () => window.removeEventListener('popstate', handler)
+  }, [])
+
+  if (path === '/legal') return <Legal />
+  return <HomePage />
 }
