@@ -64,11 +64,11 @@ const WEB_SERVICES = [
   { icon: icons.monitor,   title: 'Business & Corporate Sites',    desc: 'Professional websites that build trust and drive enquiries.',        items: ['Homepage + services layout', 'About page + credibility sections', 'Contact page with maps'],          time: '1–2 weeks' },
   { icon: icons.cart,      title: 'E-commerce & Online Stores',    desc: 'Sell online with payments built in - M-Pesa, card, and more.',       items: ['Product catalog + categories', 'Stock & order management', 'M-Pesa, Paystack, PayPal checkout'],     time: '2–3 weeks' },
   { icon: icons.home,      title: 'Real Estate & Property Listings',desc: 'Property listing sites that make searching and enquiries easy.',     items: ['Property listings + categories', 'Search filters (location, price)', 'Galleries + featured listings'], time: '2–3 weeks' },
-  { icon: icons.users,     title: 'School & Education Platforms',   desc: 'Student portals, fee payment systems, and admin dashboards.',        items: ['Student + parent portals', 'Online fee payment (M-Pesa)', 'Timetables + announcements'],              time: '3–4 weeks' },
+  { icon: icons.users,     title: 'School & Education Platforms',   desc: 'Student portals, fee payment systems, and admin dashboards.',        items: ['Student + parent portals', 'Online fee payment (M-Pesa)', 'Timetables + announcements'],              time: '2–3 weeks' },
 ]
 
 const INDUSTRY_SERVICES = [
-  { icon: icons.phone,     title: 'Clinic & Healthcare',  desc: 'Appointment booking, patient records, and billing systems.',           items: ['Online appointment booking', 'Patient record management', 'M-Pesa, card + automated receipts'], time: '3–4 weeks' },
+  { icon: icons.phone,     title: 'Clinic & Healthcare',  desc: 'Appointment booking, patient records, and billing systems.',           items: ['Online appointment booking', 'Patient record management', 'M-Pesa, card + automated receipts'], time: '2–3 weeks' },
   { icon: icons.plane,     title: 'Tour, Travel & Safari',desc: 'Package listings, booking forms, and payment confirmation.',           items: ['Tour packages + itineraries', 'Booking + enquiry forms', 'Gallery + customer reviews'],         time: '2–3 weeks' },
   { icon: icons.coffee,    title: 'Restaurant & Hotel',   desc: 'Menus, reservations, and room booking with payment.',                  items: ['Digital menu + ordering', 'Table / room reservations', 'Online payment integration'],            time: '2–3 weeks' },
   { icon: icons.briefcase, title: 'NGO & Non-profit',     desc: 'Donation portals, volunteer management, and impact reporting.',        items: ['Donation + M-Pesa giving', 'Programme pages + reports', 'Volunteer sign-up system'],             time: '2–3 weeks' },

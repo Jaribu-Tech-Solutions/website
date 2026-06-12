@@ -32,7 +32,7 @@ export default function Team() {
         <div data-reveal>
           <div className="flex items-center gap-2.5 mb-3.5">
             <span className="inline-block w-5 h-[2px]" style={{ background: 'var(--text-muted)' }} />
-            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>06 · Who we are</span>
+            <span className="text-[11px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--text-muted)' }}>07 · Who we are</span>
           </div>
           <h2 className="font-display font-extrabold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
             Small team.<br />Serious output.

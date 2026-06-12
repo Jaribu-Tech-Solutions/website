@@ -9,6 +9,7 @@ import Product from './components/Product'
 import Pricing from './components/Pricing'
 import Team from './components/Team'
 import Contact from './components/Contact'
+import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 import Legal from './components/Legal'
 
@@ -60,6 +61,7 @@ function HomePage() {
         <Portfolio />
         <Product />
         <Pricing />
+        <FAQ />
         <Team />
         <Contact />
       </main>
