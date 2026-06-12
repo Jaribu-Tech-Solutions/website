@@ -5,7 +5,10 @@ const PROJECTS = [
         src="/radamjaribu-builders.png"
         alt="Radamjaribu Builders website screenshot"
         className="w-full h-full object-cover object-top rounded"
-        style={{ maxHeight: '190px' }}
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="190"
       />
     ),
     cat: 'Construction · Real Estate',
@@ -20,7 +23,10 @@ const PROJECTS = [
         src="/barajubeats.png"
         alt="Barajubeats beat marketplace screenshot"
         className="w-full h-full object-cover object-top rounded"
-        style={{ maxHeight: '190px' }}
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="190"
       />
     ),
     cat: 'E-commerce · Music',
@@ -35,7 +41,10 @@ const PROJECTS = [
         src="/pesalens.png"
         alt="PesaLens M-Pesa statement analyser screenshot"
         className="w-full h-full object-cover object-top rounded"
-        style={{ maxHeight: '190px' }}
+        loading="lazy"
+        decoding="async"
+        width="600"
+        height="190"
       />
     ),
     cat: 'Fintech · AI Analytics',
