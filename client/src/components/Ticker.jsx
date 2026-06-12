@@ -53,7 +53,7 @@ export default function Ticker() {
         background: 'var(--bg2)',
       }}
     >
-      <div className="px-14 py-3" style={{ borderBottom: '1px solid var(--border)' }}>
+      <div className="px-5 md:px-14 py-3" style={{ borderBottom: '1px solid var(--border)' }}>
         <span className="text-[10px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>
           Technology stack
         </span>

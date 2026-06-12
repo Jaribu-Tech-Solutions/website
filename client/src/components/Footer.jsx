@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="py-14" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+        <div className="max-w-[1160px] mx-auto px-5 md:px-14">
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-10">
             {/* Brand */}
             <div>

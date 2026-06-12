@@ -83,8 +83,8 @@ const PLANS = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-28">
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+    <section id="pricing" className="py-16 md:py-28">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="mb-14">
           <div className="flex items-center gap-2.5 mb-3.5">
             <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />

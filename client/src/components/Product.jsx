@@ -11,10 +11,10 @@ export default function Product() {
   return (
     <section
       id="product"
-      className="py-28"
+      className="py-16 md:py-28"
       style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
     >
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[72px] items-center">
           {/* Left */}
           <div>

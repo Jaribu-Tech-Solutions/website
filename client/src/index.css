@@ -14,7 +14,7 @@
   --border-warm: rgba(232, 93, 26, 0.22);
   --text: #F0EDE8;
   --text-muted: #888880;
-  --text-dim: #4A4A46;
+  --text-dim: #6B6B67;
 }
 
 html {
@@ -91,6 +91,10 @@ body {
   right: 72px;
   height: 1px;
   background: linear-gradient(90deg, var(--border-warm), transparent);
+  display: none;
+}
+@media (min-width: 768px) {
+  .process-steps::before { display: block; }
 }
 
 /* Hero grid + glow */

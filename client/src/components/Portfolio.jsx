@@ -49,8 +49,8 @@ const PROJECTS = [
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-28">
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+    <section id="portfolio" className="py-16 md:py-28">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="flex items-center gap-2.5 mb-3.5">
           <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
           <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>03 · Our work</span>

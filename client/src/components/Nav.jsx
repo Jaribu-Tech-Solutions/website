@@ -6,7 +6,7 @@ export default function Nav() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-16 px-14 md:px-6"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between h-16 px-5 md:px-14"
         style={{
           background: 'rgba(10,10,10,0.9)',
           backdropFilter: 'blur(24px)',

@@ -32,12 +32,14 @@ function ContactCard({ icon, type, title, value, sub, cta, ctaPrimary }) {
         {icon}
       </div>
       <div className="text-[10px] tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--orange)' }}>{type}</div>
-      <h4 className="font-display font-semibold text-[16px] tracking-tight mb-3">{title}</h4>
-      <div className="font-display font-medium text-[15px] mb-1">{value}</div>
+      <h4 className="font-semibold text-[16px] tracking-tight mb-3">{title}</h4>
+      <div className="font-medium text-[15px] mb-1">{value}</div>
       <div className="text-[12px] mb-4 font-light" style={{ color: 'var(--text-muted)' }}>{sub}</div>
       {cta && (
         <a
           href={cta.href}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-[12px] no-underline transition-all duration-200"
           style={ctaPrimary
             ? { background: 'var(--orange)', border: '1px solid var(--orange)', color: '#fff' }
@@ -59,27 +61,69 @@ function ContactCard({ icon, type, title, value, sub, cta, ctaPrimary }) {
   )
 }
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', package: '', message: '' })
-  const [sent, setSent] = useState(false)
+const INITIAL = { name: '', email: '', phone: '', package: '', message: '' }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setSent(true)
+export default function Contact() {
+  const [form, setForm] = useState(INITIAL)
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
+
+  function set(field) {
+    return e => setForm(f => ({ ...f, [field]: e.target.value }))
   }
 
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('loading')
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY
+    if (!accessKey) {
+      const subject = encodeURIComponent(`Brief from ${form.name}`)
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nPackage: ${form.package}\n\n${form.message}`
+      )
+      window.location.href = `mailto:hello@jaributechsolutions.co.ke?subject=${subject}&body=${body}`
+      setStatus('idle')
+      return
+    }
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          package: form.package,
+          message: form.message,
+          subject: `New brief from ${form.name}`,
+        }),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      setStatus('success')
+      setForm(INITIAL)
+    } catch (err) {
+      console.error('Contact form error:', err)
+      setStatus('error')
+    }
+  }
+
+  const inputClass = 'form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light w-full'
+  const inputStyle = { background: 'var(--bg3)', border: '1px solid var(--border)', color: 'var(--text)' }
+
   return (
-    <section id="contact" className="py-28">
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+    <section id="contact" className="py-16 md:py-28">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="flex items-center gap-2.5 mb-3.5">
           <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
           <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>07 · Get in touch</span>
         </div>
-        <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
-          Have something<br />to build?
+        <h2 className="font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
+          Have something<br className="hidden sm:block" /> to build?
         </h2>
         <p className="text-[15px] max-w-[480px] leading-[1.7] font-light mb-12" style={{ color: 'var(--text-muted)' }}>
-          Tell us what you need. We'll give you a straight answer on scope, cost, and timeline - no sales call required.
+          Tell us what you need. We'll give you a straight answer on scope, cost, and timeline — no sales call required.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
@@ -88,7 +132,7 @@ export default function Contact() {
             type="Direct line"
             title="Call or WhatsApp"
             value="+254 705 493 891"
-            sub="Call or drop a WhatsApp - we pick up."
+            sub="Call or drop a WhatsApp — we pick up."
             cta={{ href: 'https://wa.me/254705493891', label: 'Chat on WhatsApp →' }}
             ctaPrimary
           />
@@ -110,97 +154,148 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <div className="rounded-2xl p-10 md:p-6" style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}>
+        <div className="rounded-2xl p-6 md:p-10" style={{ background: 'var(--bg2)', border: '1px solid var(--border)' }}>
           <div className="mb-7">
-            <h3 className="font-display font-semibold text-[22px] tracking-tight mb-1.5">Send us a brief</h3>
+            <h3 className="font-semibold text-[22px] tracking-tight mb-1.5">Send us a brief</h3>
             <p className="text-[13px] font-light" style={{ color: 'var(--text-muted)' }}>
-              Fill in what you're building and we'll come back with an honest answer - scope, cost, and timeline.
+              Fill in what you're building and we'll come back with an honest answer — scope, cost, and timeline.
             </p>
           </div>
 
-          {sent ? (
-            <div className="py-10 text-center">
-              <div className="text-[32px] mb-3">✅</div>
-              <div className="font-display font-semibold text-[18px] mb-2">Brief received!</div>
-              <p className="text-[14px] font-light" style={{ color: 'var(--text-muted)' }}>We'll reply within a few hours.</p>
+          {status === 'success' ? (
+            <div className="py-12 text-center">
+              <div
+                className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4"
+                style={{ background: 'rgba(58,158,95,0.12)', border: '1px solid rgba(58,158,95,0.3)' }}
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3a9e5f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div className="font-semibold text-[20px] mb-2">Brief received!</div>
+              <p className="text-[14px] font-light mb-5" style={{ color: 'var(--text-muted)' }}>
+                We'll review it and reply within a few hours. Check your inbox — and WhatsApp if you left your number.
+              </p>
+              <button
+                onClick={() => setStatus('idle')}
+                className="text-[12px] no-underline px-4 py-2 rounded-md cursor-pointer"
+                style={{ background: 'transparent', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+              >
+                Send another brief
+              </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-3.5">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Your name</label>
+                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Your name *</label>
                   <input
                     type="text"
                     placeholder="Jane Wanjiku"
                     value={form.name}
-                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    onChange={set('name')}
                     required
-                    className="form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light"
-                    style={{ background: 'var(--bg3)', border: '1px solid var(--border)', color: 'var(--text)' }}
+                    disabled={status === 'loading'}
+                    className={inputClass}
+                    style={inputStyle}
                   />
                 </div>
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Email</label>
+                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Email *</label>
                   <input
                     type="email"
                     placeholder="jane@company.co.ke"
                     value={form.email}
-                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    onChange={set('email')}
                     required
-                    className="form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light"
-                    style={{ background: 'var(--bg3)', border: '1px solid var(--border)', color: 'var(--text)' }}
+                    disabled={status === 'loading'}
+                    className={inputClass}
+                    style={inputStyle}
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-[7px]">
                   <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Phone / WhatsApp</label>
                   <input
                     type="tel"
                     placeholder="+254 7xx xxx xxx"
                     value={form.phone}
-                    onChange={e => setForm(f => ({ ...f, phone: e.target.value }))}
-                    className="form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light"
-                    style={{ background: 'var(--bg3)', border: '1px solid var(--border)', color: 'var(--text)' }}
+                    onChange={set('phone')}
+                    disabled={status === 'loading'}
+                    className={inputClass}
+                    style={inputStyle}
                   />
                 </div>
                 <div className="flex flex-col gap-[7px]">
-                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Package interest</label>
+                  <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>Budget range</label>
                   <select
                     value={form.package}
-                    onChange={e => setForm(f => ({ ...f, package: e.target.value }))}
-                    className="form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light"
-                    style={{ background: 'var(--bg3)', border: '1px solid var(--border)', color: form.package ? 'var(--text)' : 'var(--text-dim)' }}
+                    onChange={set('package')}
+                    disabled={status === 'loading'}
+                    className={inputClass}
+                    style={{ ...inputStyle, color: form.package ? 'var(--text)' : 'var(--text-muted)' }}
                   >
-                    <option value="" disabled>Not sure yet - help me decide</option>
-                    <option>Starter Kit - KES 15,000</option>
-                    <option>Full Suite - KES 35,000</option>
-                    <option>Custom Build - From KES 60,000</option>
+                    <option value="">Not sure yet — help me decide</option>
+                    <option value="Starter — KES 15,000">Starter — KES 15,000</option>
+                    <option value="Full Suite — KES 35,000">Full Suite — KES 35,000</option>
+                    <option value="Custom — From KES 60,000">Custom — From KES 60,000</option>
                   </select>
                 </div>
               </div>
+
               <div className="flex flex-col gap-[7px]">
-                <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>What are you building?</label>
+                <label className="text-[10px] tracking-[0.1em] uppercase" style={{ color: 'var(--text-dim)' }}>What are you building? *</label>
                 <textarea
-                  placeholder="Describe what you need - rough is fine. The more detail, the faster we can give you a real answer on scope and cost."
+                  placeholder="Describe what you need — rough is fine. What does your business do, what problem does this solve, and any deadlines we should know about?"
                   value={form.message}
-                  onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                  onChange={set('message')}
                   required
-                  rows={4}
-                  className="form-input px-3.5 py-[11px] rounded-lg text-[13px] font-light resize-none"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)', color: 'var(--text)', minHeight: '100px' }}
+                  rows={5}
+                  disabled={status === 'loading'}
+                  className={`${inputClass} resize-none`}
+                  style={inputStyle}
                 />
               </div>
+
+              {status === 'error' && (
+                <div
+                  className="flex items-center gap-2.5 px-4 py-3 rounded-lg text-[13px]"
+                  style={{ background: 'rgba(220,60,60,0.08)', border: '1px solid rgba(220,60,60,0.2)', color: '#e87272' }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Something went wrong. Try emailing us directly at{' '}
+                  <a href="mailto:hello@jaributechsolutions.co.ke" className="underline" style={{ color: '#e87272' }}>
+                    hello@jaributechsolutions.co.ke
+                  </a>
+                </div>
+              )}
+
               <div className="flex items-center justify-between pt-1 flex-wrap gap-4">
-                <span className="text-[11px]" style={{ color: 'var(--text-dim)' }}>We reply fast - usually within a few hours. No spam, ever.</span>
+                <span className="text-[11px]" style={{ color: 'var(--text-dim)' }}>
+                  We reply fast — usually within a few hours. No spam, ever.
+                </span>
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white cursor-pointer transition-all duration-200 font-body"
-                  style={{ background: 'var(--orange)', border: 'none' }}
-                  onMouseEnter={e => e.currentTarget.style.background = 'var(--orange-dim)'}
-                  onMouseLeave={e => e.currentTarget.style.background = 'var(--orange)'}
+                  disabled={status === 'loading'}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium text-white cursor-pointer transition-all duration-200"
+                  style={{
+                    background: status === 'loading' ? 'var(--orange-dim)' : 'var(--orange)',
+                    border: 'none',
+                    opacity: status === 'loading' ? 0.75 : 1,
+                  }}
+                  onMouseEnter={e => { if (status !== 'loading') e.currentTarget.style.background = 'var(--orange-dim)' }}
+                  onMouseLeave={e => { if (status !== 'loading') e.currentTarget.style.background = 'var(--orange)' }}
                 >
-                  Send brief →
+                  {status === 'loading' ? (
+                    <>
+                      <svg className="animate-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                      </svg>
+                      Sending…
+                    </>
+                  ) : 'Send brief →'}
                 </button>
               </div>
             </form>

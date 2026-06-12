@@ -78,8 +78,8 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex items-end overflow-hidden"
-      style={{ minHeight: '100vh', paddingBottom: '100px', paddingTop: '64px' }}
+      className="relative flex items-center overflow-hidden"
+      style={{ minHeight: '100vh', paddingTop: '96px', paddingBottom: '80px' }}
     >
       <div className="hero-grid-bg" />
       <div
@@ -96,9 +96,13 @@ export default function Hero() {
         style={{ opacity: 0.55, width: '100%', height: '100%' }}
       />
 
-      <div className="relative z-20 max-w-[1160px] mx-auto px-14 md:px-5 w-full">
-        <div className="max-w-[860px]">
-          <div className="flex items-center gap-2.5 mb-9 anim-fade-up anim-delay-1">
+      <div className="relative z-20 max-w-[1160px] mx-auto px-5 md:px-14 w-full">
+        <div className="max-w-[860px]"
+          style={{
+            background: 'radial-gradient(ellipse 110% 120% at 0% 50%, rgba(10,10,10,0.72) 60%, transparent 100%)',
+          }}
+        >
+          <div className="flex items-center gap-2.5 mb-5 md:mb-8 anim-fade-up anim-delay-1">
             <div className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--orange)' }} />
             <span className="text-[11px] tracking-[0.13em] uppercase" style={{ color: 'var(--text-muted)' }}>
               Nairobi, Kenya · Est. 2024
@@ -106,15 +110,15 @@ export default function Hero() {
           </div>
 
           <h1
-            className="font-display font-extrabold leading-none tracking-tight mb-7 anim-fade-up anim-delay-2"
-            style={{ fontSize: 'clamp(48px, 6.5vw, 88px)' }}
+            className="font-display font-extrabold leading-none tracking-tight mb-5 md:mb-7 anim-fade-up anim-delay-2"
+            style={{ fontSize: 'clamp(28px, 6vw, 88px)' }}
           >
-            We digitise and automate<br />
-            <span className="kenya-underline">Kenyan</span> businesses.
+            We digitise and automate<br className="hidden sm:block" />
+            {' '}<span className="kenya-underline">Kenyan</span> businesses.
           </h1>
 
           <p
-            className="text-base max-w-[480px] leading-[1.75] mb-11 font-light anim-fade-up anim-delay-3"
+            className="text-base max-w-[480px] leading-[1.75] mb-7 md:mb-10 font-light anim-fade-up anim-delay-3"
             style={{ color: 'var(--text-muted)' }}
           >
             Custom web apps, payment integrations, and workflow automation. We take your business from manual to digital - fast, without the agency fluff.
@@ -145,8 +149,8 @@ export default function Hero() {
 
       {/* Stats */}
       <div
-        className="absolute z-20 flex gap-9 anim-fade-up anim-delay-5"
-        style={{ bottom: '100px', right: '56px' }}
+        className="absolute z-20 hidden md:flex gap-9 anim-fade-up anim-delay-5"
+        style={{ bottom: '80px', right: '56px' }}
       >
         {[
           { num: '2', lbl: 'Developers' },

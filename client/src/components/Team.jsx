@@ -25,10 +25,10 @@ export default function Team() {
   return (
     <section
       id="team"
-      className="py-28"
+      className="py-16 md:py-28"
       style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}
     >
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="flex items-center gap-2.5 mb-3.5">
           <span className="inline-block w-[18px] h-px" style={{ background: 'var(--text-dim)' }} />
           <span className="text-[11px] tracking-[0.14em] uppercase" style={{ color: 'var(--text-dim)' }}>06 · Who we are</span>

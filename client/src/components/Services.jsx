@@ -93,8 +93,8 @@ function Category({ label, services, cols = 4 }) {
 
 export default function Services() {
   return (
-    <section id="services" className="py-28">
-      <div className="max-w-[1160px] mx-auto px-14 md:px-5">
+    <section id="services" className="py-16 md:py-28">
+      <div className="max-w-[1160px] mx-auto px-5 md:px-14">
         <div className="mb-14">
           <SectionLabel text="01 · Services" />
           <h2 className="font-display font-bold tracking-tight leading-[1.1] mb-4" style={{ fontSize: 'clamp(32px, 3.8vw, 52px)' }}>
