@@ -32,7 +32,7 @@ export default function Legal() {
 
   return (
     <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
-      {/* Nav bar — minimal */}
+      {/* Nav bar - minimal */}
       <div
         className="sticky top-0 z-50 flex items-center justify-between px-5 md:px-14"
         style={{ height: '64px', background: 'var(--bg)', borderBottom: '1px solid var(--border)' }}
@@ -100,7 +100,7 @@ export default function Legal() {
               ].map(([field, why]) => (
                 <li key={field} className="flex items-start gap-2">
                   <span style={{ color: 'var(--orange)', flexShrink: 0 }}>→</span>
-                  <span><strong style={{ color: 'var(--text)', fontWeight: 500 }}>{field}</strong> — {why}</span>
+                  <span><strong style={{ color: 'var(--text)', fontWeight: 500 }}>{field}</strong> - {why}</span>
                 </li>
               ))}
             </ul>
@@ -131,7 +131,7 @@ export default function Legal() {
               Our website is hosted on <strong style={{ color: 'var(--text)', fontWeight: 500 }}>Vercel</strong> (vercel.com),
               which may collect anonymous usage analytics (page views, performance metrics).
               Vercel's privacy policy governs that data. We also use Vercel Speed Insights and Analytics
-              for site performance monitoring — no personally identifiable information is collected through these tools.
+              for site performance monitoring - no personally identifiable information is collected through these tools.
             </p>
           </Section>
 
@@ -239,7 +239,7 @@ export default function Legal() {
 
           <Section title="5. Intellectual property">
             <p>
-              On receipt of full payment, you own the final deliverable — the code written specifically for your project.
+              On receipt of full payment, you own the final deliverable - the code written specifically for your project.
               We retain the right to showcase the project in our portfolio unless you request confidentiality in writing before the project begins.
             </p>
             <Sub title="Third-party tools:">

@@ -26,7 +26,7 @@ export default function Nav() {
           <li><a href="#contact" className="nav-cta text-[13px] no-underline">Talk to us →</a></li>
         </ul>
 
-        {/* Mobile: hamburger only — no competing CTA */}
+        {/* Mobile: hamburger only - no competing CTA */}
         <div className="flex md:hidden items-center">
           <button
             onClick={() => setMobileOpen(o => !o)}

@@ -139,7 +139,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Stats — visible on mobile below CTAs */}
+          {/* Stats - visible on mobile below CTAs */}
           <div className="flex gap-8 mt-9 md:hidden anim-fade-up anim-delay-5">
             {[
               { num: '2', lbl: 'Developers' },

@@ -102,7 +102,7 @@ body {
 }
 .btn-primary:hover { background: var(--orange-dim); }
 
-/* Ghost button — border warm + orange text on hover */
+/* Ghost button - border warm + orange text on hover */
 .btn-ghost {
   background: transparent;
   border: 1px solid var(--border);
@@ -111,7 +111,7 @@ body {
 }
 .btn-ghost:hover { border-color: var(--border-warm); color: var(--orange); }
 
-/* Ghost button — white border + white text on hover */
+/* Ghost button - white border + white text on hover */
 .btn-ghost-white {
   background: transparent;
   border: 1px solid var(--border);
@@ -172,7 +172,7 @@ body {
   .process-steps::before { display: block; }
 }
 
-/* Hero section height — full screen on mobile, capped on large screens */
+/* Hero section height - full screen on mobile, capped on large screens */
 .hero-section {
   min-height: 100vh;
 }
@@ -278,7 +278,7 @@ body {
 /* Services tab content fade on switch */
 .tab-fade { animation: fadeUp 0.3s ease both; }
 
-/* Reduced motion — disable all animations for users who prefer it */
+/* Reduced motion - disable all animations for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
