@@ -1,3 +1,10 @@
 {
+  "redirects": [
+    {
+      "source": "https://jaributechsolutions.co.ke/(.*)",
+      "destination": "https://www.jaributechsolutions.co.ke/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
