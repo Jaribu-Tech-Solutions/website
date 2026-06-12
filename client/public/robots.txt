@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jaributechsolutions.co.ke/sitemap.xml
