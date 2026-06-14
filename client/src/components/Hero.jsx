@@ -121,7 +121,7 @@ export default function Hero() {
             className="text-base max-w-[480px] leading-[1.75] mb-7 md:mb-10 font-light anim-fade-up anim-delay-3"
             style={{ color: 'var(--text-muted)' }}
           >
-            Custom web apps, payment integrations, and workflow automation. We take your business from manual to digital - fast, without the agency fluff.
+            Custom web apps, payment integrations, and workflow automation. We take your business from manual to digital, fast, without the agency fluff.
           </p>
 
           <div className="flex items-center gap-4 flex-wrap anim-fade-up anim-delay-4">

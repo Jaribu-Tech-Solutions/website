@@ -13,7 +13,7 @@ const PROJECTS = [
     ),
     cat: 'Construction · Real Estate',
     name: 'Radamjaribu Builders',
-    desc: 'Full business website for a Nairobi-based construction firm. Services showcase, project gallery with real site photos, quote request flow, and a client-facing dashboard. All built to win trust before the first call.',
+    desc: 'Full business website for a Kakamega-based construction firm. Services showcase, project gallery with real site photos, quote request flow, and a client-facing dashboard. All built to win trust before the first call.',
     stack: ['Business Website', 'Project Gallery', 'Quote Flow', 'Client Dashboard'],
     link: 'https://www.radamjaribubuilders.co.ke/',
   },

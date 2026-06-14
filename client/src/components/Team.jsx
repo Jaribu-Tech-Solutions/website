@@ -5,7 +5,7 @@ const MEMBERS = [
     roles: ['Backend', 'Systems', 'Full-stack'],
     bio: 'Backend engineer and systems architect. Has built and shipped payment systems, marketplaces, and automation tools used by real businesses. If it touches money or data, he\'s the one building it.',
     links: [
-      { label: 'GitHub ↗', href: 'https://github.com/BakariJuma1' },
+      // { label: 'GitHub ↗', href: 'https://github.com/BakariJuma1' },
       { label: 'LinkedIn ↗', href: 'https://linkedin.com/in/bakari-juma1' },
     ],
   },
