@@ -56,6 +56,6 @@ This repository contains the Jaribu Tech Solutions marketing website — a singl
 
 ---
 
-## Built By
+## Built By..
 
 [Jaribu Tech Solutions](https://www.jaributechsolutions.co.ke) — Nairobi, Kenya.
