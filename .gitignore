@@ -16,3 +16,6 @@ client/.env
 # General
 .DS_Store
 *.log
+.env
+.env.local
+.vercel*
