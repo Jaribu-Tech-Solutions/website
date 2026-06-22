@@ -9,7 +9,7 @@ function SectionLabel({ text }) {
   )
 }
 
-function SvcCard({ title, desc, items, time }) {
+function SvcCard({ title, desc, items, time, demoUrl }) {
   return (
     <div className="svc-card rounded-xl p-6">
       <h4 className="font-display font-semibold text-[14px] tracking-tight leading-snug mb-2">{title}</h4>
@@ -22,9 +22,22 @@ function SvcCard({ title, desc, items, time }) {
           </li>
         ))}
       </ul>
-      <div className="flex items-center justify-between pt-3.5" style={{ borderTop: '1px solid var(--border)' }}>
-        <span className="text-[10px] tracking-[0.04em]" style={{ color: 'var(--text-dim)' }}>{time}</span>
-        <a href="#contact" className="flex items-center gap-1 text-[11px] font-medium no-underline svc-start-gap" style={{ color: 'var(--orange)' }}>Start →</a>
+      <div className="flex flex-col gap-2.5 pt-3.5" style={{ borderTop: '1px solid var(--border)' }}>
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] tracking-[0.04em]" style={{ color: 'var(--text-dim)' }}>{time}</span>
+          <a href="#contact" className="flex items-center gap-1 text-[11px] font-medium no-underline svc-start-gap" style={{ color: 'var(--orange)' }}>Start →</a>
+        </div>
+        {demoUrl && (
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-1.5 w-full py-2 rounded-lg text-[11px] font-semibold tracking-wide no-underline transition-opacity hover:opacity-80"
+            style={{ background: 'var(--orange)', color: '#fff' }}
+          >
+            <span style={{ fontSize: '10px' }}>▶</span> Try Demo
+          </a>
+        )}
       </div>
     </div>
   )
@@ -40,7 +53,7 @@ const WEB_SERVICES = [
 const INDUSTRY_SERVICES = [
   { title: 'Clinic & Healthcare',  desc: 'Appointment booking, patient records, and billing systems.',    items: ['Online appointment booking', 'Patient record management', 'M-Pesa, card + automated receipts'], time: '2–3 weeks' },
   { title: 'Tour, Travel & Safari',desc: 'Package listings, booking forms, and payment confirmation.',    items: ['Tour packages + itineraries', 'Booking + enquiry forms', 'Gallery + customer reviews'],         time: '2–3 weeks' },
-  { title: 'Restaurant & Hotel',   desc: 'Menus, reservations, and room booking with payment.',           items: ['Digital menu + ordering', 'Table / room reservations', 'Online payment integration'],            time: '2–3 weeks' },
+  { title: 'Restaurant & Hotel',   desc: 'Menus, reservations, and room booking with payment.',           items: ['Digital menu + ordering', 'Table / room reservations', 'Online payment integration'],            time: '2–3 weeks', demoUrl: 'https://restaurant-starter-demo.jaributechsolutions.co.ke/' },
   { title: 'NGO & Non-profit',     desc: 'Donation portals, volunteer management, and impact reporting.', items: ['Donation + M-Pesa giving', 'Programme pages + reports', 'Volunteer sign-up system'],             time: '2–3 weeks' },
 ]
 
@@ -52,13 +65,13 @@ const AUTO_SERVICES = [
 ]
 
 const TABS = [
-  { key: 'web',        label: 'Web & App',  services: WEB_SERVICES,      cols: 4 },
   { key: 'industry',   label: 'Industry',   services: INDUSTRY_SERVICES,  cols: 4 },
+  { key: 'web',        label: 'Web & App',  services: WEB_SERVICES,      cols: 4 },
   { key: 'automation', label: 'Automation', services: AUTO_SERVICES,      cols: 4 },
 ]
 
 export default function Services() {
-  const [active, setActive] = useState('web')
+  const [active, setActive] = useState('industry')
   const tab = TABS.find(t => t.key === active)
 
   return (
